@@ -1,294 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>md tarik bosunia</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  </head>
-  <body>
-    <main>
-      <div class="container">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4 text-center m-auto my-5">
-            <img class="rounded-circle" src="my_pic.jpg" alt="Tarik" width="140" height="140">
-            <div id="profile_footer" class="text-center">
-              <h1 id="profileName" class="">Md Tarik Bosunia</h1>
-              <h3 class="">Uposhor, Rajshahi</h3>
-              <p class="">01720198552</p>
-              <p class="">bosuniamdtarik005@gmail.com</p>
+  <!-- Title -->
+  <title>Md Tarik Bosunia - Portfolio</title>
+
+  <!-- Tailwind CSS CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Custom Styles -->
+  <style>
+    /* Custom animation keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+      <div class="container mx-auto flex justify-between items-center py-4">
+        <a href="#" class="text-2xl font-bold text-indigo-600">Md Tarik Bosunia</a>
+        <ul class="flex space-x-6">
+          <li><a href="#about" class="text-gray-700 hover:text-indigo-500">About</a></li>
+          <li><a href="#projects" class="text-gray-700 hover:text-indigo-500">Projects</a></li>
+          <li><a href="#skills" class="text-gray-700 hover:text-indigo-500">Skills</a></li>
+          <li><a href="#contact" class="text-gray-700 hover:text-indigo-500">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <!-- Add some top padding to compensate for fixed navbar -->
+    <div class="pt-20"></div>
+
+   <!-- Hero Section -->
+<section class="relative bg-cover bg-center h-screen" style="background-color: #CEE3D9;">
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="container mx-auto h-full flex flex-col justify-center items-center text-center text-white relative">
+    <h1 class="text-5xl font-bold mb-4 fade-in">Hi, I'm Md Tarik Bosunia</h1>
+    <p class="text-2xl mb-6 fade-in" id="typed-text"></p>
+    <a href="#projects" class="mt-6 inline-block bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-full font-semibold transition duration-300">View My Work</a>
+  </div>
+</section>
+
+    <!-- Typing Animation Script -->
+    <script>
+      const typedText = document.getElementById('typed-text');
+      const phrases = ["A Web Developer", "A Game Enthusiast", "An Ethical Hacker"];
+      let phraseIndex = 0;
+      let letterIndex = 0;
+      let currentPhrase = [];
+      let isDeleting = false;
+      let isEnd = false;
+  
+      function loop() {
+        isEnd = false;
+        typedText.innerHTML = currentPhrase.join('');
+  
+        if (phraseIndex < phrases.length) {
+  
+          if (!isDeleting && letterIndex <= phrases[phraseIndex].length) {
+            currentPhrase.push(phrases[phraseIndex][letterIndex]);
+            letterIndex++;
+            typedText.innerHTML = currentPhrase.join('');
+          }
+  
+          if(isDeleting && letterIndex <= phrases[phraseIndex].length) {
+            currentPhrase.pop(phrases[phraseIndex][letterIndex]);
+            letterIndex--;
+            typedText.innerHTML = currentPhrase.join('');
+          }
+  
+          if (letterIndex == phrases[phraseIndex].length) {
+            isEnd = true;
+            isDeleting = true;
+          }
+  
+          if (isDeleting && letterIndex === 0) {
+            currentPhrase = [];
+            isDeleting = false;
+            phraseIndex++;
+            if (phraseIndex === phrases.length) {
+              phraseIndex = 0;
+            }
+          }
+        }
+        const typingSpeed = isEnd ? 2000 : isDeleting ? 50 : 100;
+        setTimeout(loop, typingSpeed);
+      }
+  
+      loop();
+    </script>
+  
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+      <div class="container mx-auto text-center fade-in">
+        <!-- Heading Animation -->
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-6">
+          Full-Stack Web Developer
+        </h2>
+        <!-- Subheading Animation -->
+        <p class="text-xl font-semibold text-blue-600 mb-4">
+          Specializing in Django, Next.js, TypeScript, Docker & Kubernetes
+        </p>
+    
+        <!-- Animated Paragraph with subtle fade-in and zoom -->
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto transition-transform transform scale-95 hover:scale-100 duration-500">
+          I am a dedicated Full-Stack Web Developer with expertise in building robust, scalable applications using modern technologies like Django for backend development, Next.js with TypeScript for the frontend, and Git/GitHub for version control. My proficiency extends to deploying containerized applications using Docker, with orchestration through Kubernetes, ensuring high availability and efficient scaling in production environments. I am passionate about delivering performant, secure, and user-friendly solutions tailored to meet specific business goals.
+        </p>
+    
+        <!-- Highlight Tools/Skills with Icons (optional) -->
+        <div class="mt-8 flex justify-center space-x-8">
+          <img src="path/to/git-icon.svg" alt="Git" class="h-10 w-10">
+          <img src="path/to/github-icon.svg" alt="GitHub" class="h-10 w-10">
+          <img src="path/to/docker-icon.svg" alt="Docker" class="h-10 w-10">
+          <img src="path/to/kubernetes-icon.svg" alt="Kubernetes" class="h-10 w-10">
+        </div>
+    
+        <!-- CTA Button with hover animation -->
+        <div class="mt-10">
+          <a href="#projects" class="bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
+            View My Projects
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    
+
+    <section id="projects" class="py-20 bg-gray-100">
+      <div class="container mx-auto text-center fade-in">
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-12">My Projects</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-10">
+          A showcase of the web applications I’ve built using modern technologies like Django, Next.js, TypeScript, and Docker.
+        </p>
+    
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <!-- Project Card 1 -->
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 fade-in">
+            <img src="project1-thumbnail.jpg" alt="Yousrobd.com" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-indigo-600 mb-2">Yousrobd.com</h3>
+              <p class="text-gray-600 mb-4">A robust platform built using Django and React, optimized for performance and user experience.</p>
+              <a href="https://yousrobd.com" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-semibold">
+                View Project
+              </a>
             </div>
           </div>
-          
-
-        <div id="about_me row">
-          <div class="sector col-md-12">
-            <h2>Personal Profile Statement</h2>
-            <p>
-              A motivated, adaptable and responsible Computing graduate seeking a
-              position in an IT position which will utilise the professional and
-              technical skills developed through past work experiences in this
-              field. I have a methodical, customer-focused approach to work and a
-              strong drive to see things through to completion. In my current job, I
-              have managed the launch and migration of two major IT systems which
-              was completed time and within budget.
-            </p>
-          </div>
-
-          <hr class="featurette-divider my-5">
-
-          <div class="sector col-md-12">
-            
-            <h2 >Projects</h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">sno</th>
-                  <th scope="col">Project name</th>
-                  <th scope="col"> Category</th>
-                  <th scope="col">Languages/Frameworks</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>https://yousrobd.com</td>
-                  <td>website</td>
-                  <td> django, react</td>
-              
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>AirFighting-1</td>
-                  <td>Game</td>
-                  <td> C++ SFML</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>AirFighting-2</td>
-                  <td>Game</td>
-                  <td> C++ SFML</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Todo App</td>
-                  <td>WebApp</td>
-                  <td>React , HTML , CSS</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Country</td>
-                  <td>WebApp</td>
-                  <td>React , HTML , CSS</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </div>
-          <hr class="featurette-divider my-5">
-          <div class="sector my-5">
-            <h2>Achievements</h2>
-            <ul class="list-group">
-            
-              <li class="list-group-item list-group-item-secondary">Making website with high sicurity and aptimized</li>
-              <li class="list-group-item list-group-item-secondary">Member Of the copetative programming society</li>
-              <li class="list-group-item list-group-item-secondary">a sertify ethical hacker</li>
-
-            </ul>
-          </div>
-          <hr class="featurette-divider">
     
-          <div class="sector my-5">
-            <h2>Education</h2>
-            <table>
-              <tr>
-                <th>passing year</th>
-                <th>achivement</th>
-              </tr>
-              <tr>
-                <td>2020 - 2024</td>
-                <td>BSc in Computer science and Engineering</td>
-              </tr>
-            </table>
+          <!-- Project Card 2 -->
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 fade-in">
+            <img src="project2-thumbnail.jpg" alt="TechTalks" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-indigo-600 mb-2">TechTalks</h3>
+              <p class="text-gray-600 mb-4">A blogging platform for tech enthusiasts, developed using Next.js and TypeScript, featuring a sleek UI and real-time updates.</p>
+              <a href="https://techtalks.com" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-semibold">
+                View Project
+              </a>
+            </div>
           </div>
     
-          <div class="sector">
-            <h2>Skills</h2>
-            <p>Excellent knowledge in-</p>
-            <h3>language</h3>
-            <p>Python  C  C++  HTML CSS Javascript C# </p>
-           
-            <h3>frameworks</h3>
-            <p>Django Flask  React  Next Bootstrap Tailwind Flutter</p>
+          <!-- Project Card 3 -->
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 fade-in">
+            <img src="project3-thumbnail.jpg" alt="RateMyProfessors Clone" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-indigo-600 mb-2">RateMyProfessors Clone</h3>
+              <p class="text-gray-600 mb-4">A professor and school rating platform built with Django and Next.js, tailored for Bangladeshi students and educators.</p>
+              <a href="https://ratemyprofessor.com" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-semibold">
+                View Project
+              </a>
+            </div>
+          </div>
+    
+          <!-- Project Card 4 -->
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 fade-in">
+            <img src="project4-thumbnail.jpg" alt="E-Shop" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-indigo-600 mb-2">E-Shop</h3>
+              <p class="text-gray-600 mb-4">A fully-featured eCommerce site built using Django and Docker for containerized deployments and scalability.</p>
+              <a href="https://eshop.com" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-semibold">
+                View Project
+              </a>
+            </div>
+          </div>
+    
+          <!-- Project Card 5 -->
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 fade-in">
+            <img src="project5-thumbnail.jpg" alt="Portfolio" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-indigo-600 mb-2">My Portfolio</h3>
+              <p class="text-gray-600 mb-4">A personal portfolio site built with Next.js and TypeScript, showcasing my development skills and professional experience.</p>
+              <a href="https://myportfolio.com" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-semibold">
+                View Project
+              </a>
+            </div>
+          </div>
+    
+          <!-- Project Card 6 -->
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 fade-in">
+            <img src="project6-thumbnail.jpg" alt="DevConnect" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-indigo-600 mb-2">DevConnect</h3>
+              <p class="text-gray-600 mb-4">A social platform for developers to connect, share projects, and collaborate, built using Django and Kubernetes for efficient scaling.</p>
+              <a href="https://devconnect.com" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-semibold">
+                View Project
+              </a>
+            </div>
           </div>
         </div>
-
-        <hr class="featurette-divider">
-
-      
-     
-
-     
-
-        <!-- /END THE FEATURETTES -->
-
       </div>
-    </main>
-
-    <footer>
-      <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container my-5">
-  <!-- Footer -->
-  <footer
-          class="text-center text-lg-start text-dark"
-          style="background-color: #ECEFF1"
-          >
-    <!-- Section: Social media -->
-    <section
-             class="d-flex justify-content-between p-4 text-white"
-             style="background-color: #21D192"
-             >
-      <!-- Left -->
-      <div class="me-5">
-        <span>Get connected with me on social networks:</span>
-      </div>
-      <!-- Left -->
-
-      <!-- Right -->
-      <div class="container  flex-row">
-        <a href="" class="w me-4">
-          <img class="w-25" src="images/fb_logo.png" alt="">
-          
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="text-white me-4">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <!-- Right -->
     </section>
-    <!-- Section: Social media -->
 
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold">Company name</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px; background-color: #7c4dff; height: 2px"
-                />
-            <p>
-              Here you can use rows and columns to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit.
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Products</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px; background-color: #7c4dff; height: 2px"
-                />
-            <p>
-              <a href="#!" class="text-dark">MDBootstrap</a>
-            </p>
-            <p>
-              <a href="#!" class="text-dark">MDWordPress</a>
-            </p>
-            <p>
-              <a href="#!" class="text-dark">BrandFlow</a>
-            </p>
-            <p>
-              <a href="#!" class="text-dark">Bootstrap Angular</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Useful links</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px; background-color: #7c4dff; height: 2px"
-                />
-            <p>
-              <a href="#!" class="text-dark">Your Account</a>
-            </p>
-            <p>
-              <a href="#!" class="text-dark">Become an Affiliate</a>
-            </p>
-            <p>
-              <a href="#!" class="text-dark">Shipping Rates</a>
-            </p>
-            <p>
-              <a href="#!" class="text-dark">Help</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Contact</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px; background-color: #7c4dff; height: 2px"
-                />
-            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-          </div>
-          <!-- Grid column -->
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-gray-50">
+  <div class="container mx-auto text-center fade-in">
+    <h2 class="text-4xl font-extrabold text-gray-900 mb-10">My Skills</h2>
+    <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+      Proficient in a wide range of programming languages and frameworks, with a strong focus on full-stack web development.
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Skill Item 1: Python -->
+      <div class="bg-white shadow-lg rounded-lg p-6 transform hover:-translate-y-2 transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Python</h3>
+        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+          <div class="bg-indigo-600 h-4 rounded-full" style="width: 90%;"></div>
         </div>
-        <!-- Grid row -->
+        <p class="text-sm text-gray-600">Advanced proficiency with extensive experience in web development and automation.</p>
       </div>
-    </section>
-    <!-- Section: Links  -->
 
-    <!-- Copyright -->
-    <div
-         class="text-center p-3"
-         style="background-color: rgba(0, 0, 0, 0.2)"
-         >
-      © 2020 Copyright:
-      <a class="text-dark" href="https://mdbootstrap.com/"
-         >MDBootstrap.com</a
-        >
+      <!-- Skill Item 2: JavaScript -->
+      <div class="bg-white shadow-lg rounded-lg p-6 transform hover:-translate-y-2 transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">JavaScript</h3>
+        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+          <div class="bg-indigo-600 h-4 rounded-full" style="width: 85%;"></div>
+        </div>
+        <p class="text-sm text-gray-600">Skilled in both front-end and back-end JavaScript with frameworks like Next.js and Node.js.</p>
+      </div>
+
+      <!-- Skill Item 3: C/C++ -->
+      <div class="bg-white shadow-lg rounded-lg p-6 transform hover:-translate-y-2 transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">C / C++</h3>
+        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+          <div class="bg-indigo-600 h-4 rounded-full" style="width: 80%;"></div>
+        </div>
+        <p class="text-sm text-gray-600">Proficient in systems programming and algorithm development using C and C++.</p>
+      </div>
+
+      <!-- Skill Item 4: Java -->
+      <div class="bg-white shadow-lg rounded-lg p-6 transform hover:-translate-y-2 transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Java</h3>
+        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+          <div class="bg-indigo-600 h-4 rounded-full" style="width: 75%;"></div>
+        </div>
+        <p class="text-sm text-gray-600">Experience in object-oriented programming, with focus on enterprise applications.</p>
+      </div>
+
+      <!-- Skill Item 5: Django -->
+      <div class="bg-white shadow-lg rounded-lg p-6 transform hover:-translate-y-2 transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Django</h3>
+        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+          <div class="bg-indigo-600 h-4 rounded-full" style="width: 90%;"></div>
+        </div>
+        <p class="text-sm text-gray-600">Expert in building secure and scalable web applications using Django.</p>
+      </div>
+
+      <!-- Skill Item 6: Next.js / TypeScript -->
+      <div class="bg-white shadow-lg rounded-lg p-6 transform hover:-translate-y-2 transition duration-300">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Next.js / TypeScript</h3>
+        <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+          <div class="bg-indigo-600 h-4 rounded-full" style="width: 85%;"></div>
+        </div>
+        <p class="text-sm text-gray-600">Proficient in building full-stack applications with Next.js and TypeScript for high-performance web apps.</p>
+      </div>
     </div>
-    <!-- Copyright -->
+  </div>
+</section>
+
+
+      <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto text-center">
+      <h3 class="text-xl font-semibold mb-4">Connect with me</h3>
+      <div class="flex justify-center space-x-6 mb-6">
+        <a href="#" class="transform hover:scale-110 transition duration-300">
+          <img src="icons/facebook.svg" alt="Facebook" class="w-6 h-6">
+        </a>
+        <a href="#" class="transform hover:scale-110 transition duration-300">
+          <img src="icons/twitter.svg" alt="Twitter" class="w-6 h-6">
+        </a>
+        <a href="#" class="transform hover:scale-110 transition duration-300">
+          <img src="icons/github.svg" alt="GitHub" class="w-6 h-6">
+        </a>
+        <a href="#" class="transform hover:scale-110 transition duration-300">
+          <img src="icons/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
+        </a>
+      </div>
+      <p>© 2024 Md Tarik Bosunia. All rights reserved.</p>
+    </div>
   </footer>
-  <!-- Footer -->
-</div>
-<!-- End of .container -->
+  <!-- Smooth Scroll Script -->
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 
-    </footer>
-
-   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
